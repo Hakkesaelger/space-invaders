@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://darjgb3fu5rx"]
+
+[ext_resource type="Script" uid="uid://ehob2k55xot1" path="res://living stuff/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://b1toamioeteuc" path="res://living stuff/bullet.tscn" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://8jj753cp1jrx" path="res://living stuff/player.png" id="3_i3pqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(41, 37)
+
+[node name="Player" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+monitorable = false
+script = ExtResource("1_onrkg")
+bullet_scene = ExtResource("2_i3pqv")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.1415927
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("3_i3pqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

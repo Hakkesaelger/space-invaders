@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://ka8b444ai3tg"]
+
+[ext_resource type="Script" uid="uid://bt0j62g2goovv" path="res://living stuff/enemy.gd" id="1_orwns"]
+[ext_resource type="PackedScene" uid="uid://b1toamioeteuc" path="res://living stuff/bullet.tscn" id="2_a6vjd"]
+[ext_resource type="Texture2D" uid="uid://bvo3qw0kt1msw" path="res://living stuff/enemy.png" id="3_07tka"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(21.75, 2.75)
+
+[node name="Enemy" type="Area2D" groups=["mobs"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 6
+collision_mask = 5
+script = ExtResource("1_orwns")
+movement_speed_side = 150
+bullet_scene = ExtResource("2_a6vjd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_07tka")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 53)
+scale = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="StartMoving" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -84)
+rect = Rect2(-50, 32, 98, 12)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="StartMoving" to="." method="_on_start_moving_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

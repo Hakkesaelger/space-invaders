@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgi21s1hlbsy8"]
+
+[ext_resource type="Script" uid="uid://cibst5bqxx422" path="res://level.gd" id="1_f2txt"]
+[ext_resource type="PackedScene" uid="uid://darjgb3fu5rx" path="res://living stuff/player.tscn" id="4_km5ld"]
+[ext_resource type="PackedScene" uid="uid://iwcmw6l6acna" path="res://HUD thingies/main_menu.tscn" id="5_i2t4f"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_f2txt")
+
+[node name="Player" parent="." instance=ExtResource("4_km5ld")]
+position = Vector2(535, 565)
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="MainMenu" parent="." instance=ExtResource("5_i2t4f")]
+
+[connection signal="go_to_menu" from="." to="MainMenu" method="_on_main_go_to_menu"]
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="new_game" from="MainMenu" to="." method="_on_main_menu_new_game"]
+[connection signal="new_game" from="MainMenu" to="Player" method="_on_main_menu_new_game"]

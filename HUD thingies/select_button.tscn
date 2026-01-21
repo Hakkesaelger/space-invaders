@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3yfh2wqswrs3"]
+
+[ext_resource type="Script" uid="uid://ctrfk8l2wgkm" path="res://HUD thingies/select_button.gd" id="1_rsgsm"]
+
+[node name="SelectButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_rsgsm")
+level = "<null>"
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
