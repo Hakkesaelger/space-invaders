@@ -3,6 +3,7 @@ extends Node
 @export var mob_scene: PackedScene
 @export var boss_scene: PackedScene
 signal go_to_menu
+var boss_spawned = false
 
 func _on_player_dead() -> void:
 	get_tree().call_group("mobs","queue_free")
@@ -23,18 +24,21 @@ func _on_main_menu_new_game():
 			mob.move_right = -1
 
 func _on_enemy_all_dead():
-	var boss = boss_scene.instantiate()
-	await get_tree().create_timer(1).timeout
-	add_child(boss)
-	$Boss/Sprite2D.position = $BossSpawnPosition.position
-	$Boss/CollisionShape2D.position = $BossSpawnPosition.position
-	await get_tree().create_timer(1).timeout
-	boss.attack_pattern()
-	$Boss/Sprite2D/HealthBar.boss_dead.connect(_on_boss_boss_dead)
+	if not boss_spawned:
+		var boss = boss_scene.instantiate()
+		await get_tree().create_timer(1).timeout
+		add_child(boss)
+		$BossOne/Boss/Sprite2D.position = $BossSpawnPosition.position
+		$BossOne/Boss/CollisionShape2D.position = $BossSpawnPosition.position
+		await get_tree().create_timer(1).timeout
+		$BossOne/Boss.attack_pattern()
+		$BossOne/Boss/Sprite2D/HealthBar.boss_dead.connect(_on_boss_boss_dead)
+		boss_spawned = true
 #	go_to_menu.emit()
 #	$MainMenu.show_text("You Win!")
 
 func _on_boss_boss_dead():
-	$Boss.queue_free()
+	print()
+	$BossOne.queue_free()
 	go_to_menu.emit()
 	$MainMenu.show_text("You Win!")

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dwkotdyumqu2r" path="res://levels/level_one.gd" id="1_nxahq"]
 [ext_resource type="PackedScene" uid="uid://bgi21s1hlbsy8" path="res://level.tscn" id="2_tfbuk"]
-[ext_resource type="PackedScene" uid="uid://csa7w4okrgsou" path="res://living stuff/boss.tscn" id="3_4wl7b"]
 [ext_resource type="PackedScene" uid="uid://ka8b444ai3tg" path="res://living stuff/enemy.tscn" id="3_tfbuk"]
+[ext_resource type="PackedScene" uid="uid://dpk1s0kjdf8hk" path="res://living stuff/boss_one.tscn" id="4_tfbuk"]
 
 [node name="LevelOne" type="Node"]
 script = ExtResource("1_nxahq")
@@ -11,7 +11,7 @@ level_select = "uid://db135r1vagu1t"
 
 [node name="Level" parent="." instance=ExtResource("2_tfbuk")]
 mob_scene = ExtResource("3_tfbuk")
-boss_scene = ExtResource("3_4wl7b")
+boss_scene = ExtResource("4_tfbuk")
 
 [node name="EnemySpawners" type="Node2D" parent="Level"]
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://csa7w4okrgsou"]
+
+[ext_resource type="Script" uid="uid://csklw2aitlkl7" path="res://boss.gd" id="1_85rbr"]
+
+[node name="Boss" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_85rbr")
+seconds_between_attacks = 0.0
+
+[node name="MobContainer" type="Node2D" parent="."]

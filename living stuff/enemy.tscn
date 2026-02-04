@@ -1,8 +1,105 @@
-[gd_scene load_steps=5 format=3 uid="uid://ka8b444ai3tg"]
+[gd_scene load_steps=25 format=3 uid="uid://ka8b444ai3tg"]
 
 [ext_resource type="Script" uid="uid://bt0j62g2goovv" path="res://living stuff/enemy.gd" id="1_orwns"]
 [ext_resource type="PackedScene" uid="uid://b1toamioeteuc" path="res://living stuff/bullet.tscn" id="2_a6vjd"]
-[ext_resource type="Texture2D" uid="uid://bvo3qw0kt1msw" path="res://living stuff/enemy.png" id="3_07tka"]
+[ext_resource type="Texture2D" uid="uid://m1nbwix45gk8" path="res://living stuff/enemy sprites/enemy death/sprite_1.png" id="4_8wyrr"]
+[ext_resource type="Texture2D" uid="uid://c3ymrx1n4n36k" path="res://living stuff/enemy sprites/enemy shoot/sprite_01.png" id="4_lnbdo"]
+[ext_resource type="Texture2D" uid="uid://cvv4odpt57j06" path="res://living stuff/enemy sprites/enemy shoot/sprite_02.png" id="5_44vuj"]
+[ext_resource type="Texture2D" uid="uid://cvrqwbwx7hw73" path="res://living stuff/enemy sprites/enemy death/sprite_2.png" id="5_b0q8v"]
+[ext_resource type="Texture2D" uid="uid://dyyorv48m8o5u" path="res://living stuff/enemy sprites/enemy shoot/sprite_03.png" id="6_5m6ck"]
+[ext_resource type="Texture2D" uid="uid://c8top1yu7bi1f" path="res://living stuff/enemy sprites/enemy death/sprite_3.png" id="6_vyquo"]
+[ext_resource type="Texture2D" uid="uid://cmeg214td6shb" path="res://living stuff/enemy sprites/enemy shoot/sprite_04.png" id="7_e6rs1"]
+[ext_resource type="Texture2D" uid="uid://bkax5bw6pvq2e" path="res://living stuff/enemy sprites/enemy death/sprite_4.png" id="7_j42tx"]
+[ext_resource type="Texture2D" uid="uid://bme83s7spi6bb" path="res://living stuff/enemy sprites/enemy shoot/sprite_05.png" id="8_44qp1"]
+[ext_resource type="Texture2D" uid="uid://dxy0lh1he1twb" path="res://living stuff/enemy sprites/enemy death/sprite_5.png" id="8_ft0u3"]
+[ext_resource type="Texture2D" uid="uid://bj0r4x01okh2g" path="res://living stuff/enemy sprites/enemy shoot/sprite_06.png" id="9_h0n7n"]
+[ext_resource type="Texture2D" uid="uid://yhqhr4po7din" path="res://living stuff/enemy sprites/enemy death/sprite_6.png" id="9_jqgjk"]
+[ext_resource type="Texture2D" uid="uid://dpvpoodap2war" path="res://living stuff/enemy sprites/enemy death/sprite_7.png" id="10_excmo"]
+[ext_resource type="Texture2D" uid="uid://doowu14iirkh8" path="res://living stuff/enemy sprites/enemy shoot/sprite_07.png" id="10_f21cv"]
+[ext_resource type="Texture2D" uid="uid://c0cfnph4x6458" path="res://living stuff/enemy sprites/enemy.png" id="10_gd663"]
+[ext_resource type="Texture2D" uid="uid://crojoog0gu7g4" path="res://living stuff/enemy sprites/enemy shoot/sprite_08.png" id="11_gd663"]
+[ext_resource type="Texture2D" uid="uid://caudagnpsjfxc" path="res://living stuff/enemy sprites/enemy shoot/sprite_09.png" id="12_8wyrr"]
+[ext_resource type="Texture2D" uid="uid://bqe45wb6qr2jn" path="res://living stuff/enemy sprites/enemy shoot/sprite_10.png" id="13_b0q8v"]
+[ext_resource type="Texture2D" uid="uid://dihglpluj6br" path="res://living stuff/enemy sprites/enemy shoot/sprite_12.png" id="14_vyquo"]
+[ext_resource type="Texture2D" uid="uid://vr23ia5uok3t" path="res://living stuff/enemy sprites/enemy shoot/sprite_11.png" id="15_j42tx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ft0u3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8wyrr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b0q8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vyquo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j42tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ft0u3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jqgjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_excmo")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_gd663")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lnbdo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_44vuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5m6ck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e6rs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_44qp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_h0n7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_f21cv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gd663")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8wyrr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_b0q8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vyquo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j42tx")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
 size = Vector2(21.75, 2.75)
@@ -15,15 +112,6 @@ script = ExtResource("1_orwns")
 movement_speed_side = 150
 bullet_scene = ExtResource("2_a6vjd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_07tka")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 53)
-scale = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_4gyqm")
-
 [node name="StartMoving" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
@@ -32,6 +120,16 @@ autostart = true
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -84)
 rect = Rect2(-50, 32, 98, 12)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ft0u3")
+animation = &"shoot"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 53)
+scale = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_4gyqm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="StartMoving" to="." method="_on_start_moving_timeout"]

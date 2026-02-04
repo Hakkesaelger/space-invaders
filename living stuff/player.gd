@@ -2,38 +2,42 @@ extends Area2D
 
 signal dead
 var velocity
-@export var speed: int = 300
+@export var movement_speed: int = 300
 @export var bullet_scene: PackedScene
-var attackCooldownOver = true
+var attack_cooldown_over = true
+var attack_side = 32
 
-func _process(delta):
+func _process(_delta):
+	if Input.is_action_just_pressed("shoot") and attack_cooldown_over:
+		$AttackCooldown.start()
+		attack_cooldown_over = false
+		var bullet = bullet_scene.instantiate()
+		var bullet_position = position
+		bullet_position.y -= 35
+		bullet_position.x += attack_side
+		attack_side *= -1
+		bullet.position = bullet_position
+		bullet.evil = false
+		add_sibling(bullet)
+
+func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	
-	if Input.is_action_pressed("left"):
-		velocity.x -= speed
-	if Input.is_action_pressed("right"):
-		velocity.x += speed
+	velocity.x += Input.get_axis("left","right") * movement_speed
+	
 	
 	position += velocity * delta
 	
 	var screen_size = get_viewport_rect().size
 	position.x = clampf(position.x, 0, screen_size.x)
-	if Input.is_action_just_pressed("shoot") and attackCooldownOver:
-		$AttackCooldown.start()
-		attackCooldownOver = false
-		var bullet = bullet_scene.instantiate()
-		var bullet_position = position
-		bullet_position.y -= 35
-		bullet.position = bullet_position
-		bullet.evil = false
-		add_sibling(bullet)
+	
 
 func _on_main_menu_new_game():
 	show()
 	$CollisionShape2D.set_deferred("disabled", false)
 
 func _on_attack_cooldown_timeout() -> void:
-	attackCooldownOver = true
+	attack_cooldown_over = true
 
 
 func _on_body_entered(body: Node2D) -> void:
