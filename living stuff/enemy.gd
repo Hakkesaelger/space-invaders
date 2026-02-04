@@ -70,6 +70,7 @@ func shoot():
 	get_parent().add_sibling(bullet)
 	bullet.rotation = PI
 	bullet.linear_velocity.y *= -1
-	await get_tree().create_timer(0.3).timeout
-	if not dying:
-		$AnimatedSprite2D.play("idle")
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$AnimatedSprite2D.play("idle")

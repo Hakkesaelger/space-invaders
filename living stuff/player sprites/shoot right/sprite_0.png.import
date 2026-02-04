@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dihglpluj6br"
-path="res://.godot/imported/sprite_12.png-b032131de86e17e5e58523db1ab8ba85.ctex"
+uid="uid://d018ptcpaeaia"
+path="res://.godot/imported/sprite_0.png-2ecfd5434b65e5e543550c665262206c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://living stuff/enemy sprites/enemy shoot/sprite_12.png"
-dest_files=["res://.godot/imported/sprite_12.png-b032131de86e17e5e58523db1ab8ba85.ctex"]
+source_file="res://living stuff/player sprites/shoot right/sprite_0.png"
+dest_files=["res://.godot/imported/sprite_0.png-2ecfd5434b65e5e543550c665262206c.ctex"]
 
 [params]
 

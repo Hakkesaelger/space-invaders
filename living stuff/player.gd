@@ -7,6 +7,9 @@ var velocity: Vector2
 var attack_cooldown_over: bool = true
 var attack_side: int = 32
 
+func _ready():
+	$AnimatedSprite2D.play("idle")
+
 func _process(_delta):
 	if Input.is_action_just_pressed("shoot") and attack_cooldown_over:
 		$AttackCooldown.start()
@@ -19,6 +22,9 @@ func _process(_delta):
 		bullet.position = bullet_position
 		bullet.evil = false
 		add_sibling(bullet)
+		$AnimatedSprite2D.play("shoot right")
+		if attack_side > 0:
+			$AnimatedSprite2D.play("shoot left")
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -54,3 +60,7 @@ func _on_area_entered(_area: Area2D) -> void:
 
 func _on_enemy_left_screen():
 	die()
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$AnimatedSprite2D.play("idle")

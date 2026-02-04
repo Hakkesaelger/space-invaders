@@ -25,7 +25,7 @@ func _on_main_menu_new_game():
 
 func _on_enemy_all_dead():
 	if not boss_spawned:
-		var boss: Area2D = boss_scene.instantiate()
+		var boss: Node2D = boss_scene.instantiate()
 		await get_tree().create_timer(1).timeout
 		add_child(boss)
 		$BossOne/Boss/Sprite2D.position = $BossSpawnPosition.position
