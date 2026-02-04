@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://db135r1vagu1t"]
+[gd_scene load_steps=2 format=3 uid="uid://db135r1vagu1t"]
 
-[ext_resource type="Script" uid="uid://bj0e3d0hffmrp" path="res://HUD thingies/level_select.gd" id="1_edxcq"]
 [ext_resource type="PackedScene" uid="uid://d3yfh2wqswrs3" path="res://HUD thingies/select_button.tscn" id="1_o7307"]
 
 [node name="LevelSelect" type="Control"]
@@ -10,7 +9,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_edxcq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

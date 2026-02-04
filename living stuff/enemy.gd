@@ -9,12 +9,12 @@ var movement: float = 0
 @export var movement_speed_side: int = 5
 var bullet_progress: float = 0
 @export var bullet_scene: PackedScene
-var bullet_possibility
-@export var bullet_chance = 0.1
-var move_down = false
-@export var movement_speed_down = 15
-var ready_to_shoot = false
-var dying = false
+var bullet_possibility: float
+@export var bullet_chance: float = 0.1
+var move_down: bool = false
+@export var movement_speed_down: int = 15
+var ready_to_shoot: bool = false
+var dying: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -63,7 +63,7 @@ func shoot():
 		$AnimatedSprite2D.play("shoot")
 	await get_tree().create_timer(2).timeout
 	var bullet: RigidBody2D = bullet_scene.instantiate()
-	var bullet_position = position
+	var bullet_position: Vector2 = position
 	bullet_position.y += 35
 	bullet.position = bullet_position
 	bullet.evil = true

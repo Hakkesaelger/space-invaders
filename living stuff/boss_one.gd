@@ -1,13 +1,13 @@
 extends Node2D
 
 @export var bullet_scene: PackedScene
-@export var bullet_amount = 10
-@export var attack_stick_speed = 300
+@export var bullet_amount: int = 10
+@export var attack_stick_speed: int = 300
 @export var mob_scene: PackedScene
-@export var reinforcements = 3
-var positions = [110, 220, 330, 440, 550, 660, 770, 880, 990]
-var used_positions = []
-@export var attack_stick_random_distance_from_player = 350
+@export var reinforcements: int = 3
+var positions: Array = [110, 220, 330, 440, 550, 660, 770, 880, 990]
+var used_positions: Array = []
+@export var attack_stick_random_distance_from_player: int = 350
 
 func _ready():
 	$Boss.process = do_nothing
@@ -19,7 +19,7 @@ func do_nothing(_delta):
 	pass
 
 func hole_in_the_wall():
-	var random_pos = get_parent().get_node("Player").position.x
+	var random_pos: int = get_parent().get_node("Player").position.x
 	#The hole is centered on the player
 	random_pos += randi() % (2 * attack_stick_random_distance_from_player) - attack_stick_random_distance_from_player
 	#Add some randomization
@@ -34,10 +34,10 @@ func hole_in_the_wall():
 	$Boss.process = do_nothing
 
 func bullet_circle():
-	var firstBullet = randi() % 360
+	var firstBullet: int = randi() % 360
 	@warning_ignore("integer_division")
 	for i in range(firstBullet, 360 + firstBullet, 360 / bullet_amount):
-		var bullet := bullet_scene.instantiate()
+		var bullet: RigidBody2D = bullet_scene.instantiate()
 		bullet.evil = true
 		bullet.speed = bullet.speed.rotated(deg_to_rad(i))
 		bullet.position = $Boss/Sprite2D.position
@@ -48,7 +48,7 @@ func summon_reinforcements():
 	if len(used_positions) == len(positions):
 		return
 	for i in range(reinforcements):
-		var place
+		var place: int
 		var mob: Area2D = mob_scene.instantiate()
 		$Boss/MobContainer.add_child(mob)
 		while true:

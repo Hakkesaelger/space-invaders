@@ -1,18 +1,18 @@
 extends Area2D
 
 signal dead
-var velocity
+var velocity: Vector2
 @export var movement_speed: int = 300
 @export var bullet_scene: PackedScene
-var attack_cooldown_over = true
-var attack_side = 32
+var attack_cooldown_over: bool = true
+var attack_side: int = 32
 
 func _process(_delta):
 	if Input.is_action_just_pressed("shoot") and attack_cooldown_over:
 		$AttackCooldown.start()
 		attack_cooldown_over = false
-		var bullet = bullet_scene.instantiate()
-		var bullet_position = position
+		var bullet: RigidBody2D = bullet_scene.instantiate()
+		var bullet_position: Vector2 = position
 		bullet_position.y -= 35
 		bullet_position.x += attack_side
 		attack_side *= -1
@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	
 	position += velocity * delta
 	
-	var screen_size = get_viewport_rect().size
+	var screen_size: Vector2 = get_viewport_rect().size
 	position.x = clampf(position.x, 0, screen_size.x)
 	
 

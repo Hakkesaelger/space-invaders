@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var seconds_between_attacks = 1.0
-var attacks = []
+@export var seconds_between_attacks: float = 1.0
+var attacks: Array = []
 
 var process: Callable
 

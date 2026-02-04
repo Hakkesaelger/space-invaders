@@ -1,7 +1,7 @@
 extends ColorRect
 
 signal boss_dead
-var health = 20
+var health: int = 20
 
 func _on_boss_body_entered(body: Node2D) -> void:
 	if not body.evil:
