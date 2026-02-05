@@ -1,4 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-*.DS__Store
+*.DS_Store
