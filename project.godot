@@ -15,6 +15,10 @@ run/main_scene="uid://db135r1vagu1t"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerInformation="*res://player_information.tscn"
+
 [global_group]
 
 mobs=""

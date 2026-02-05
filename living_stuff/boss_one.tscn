@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpk1s0kjdf8hk"]
+
+[ext_resource type="PackedScene" uid="uid://csa7w4okrgsou" path="res://boss.tscn" id="1_q1gx3"]
+[ext_resource type="Script" uid="uid://4yp1py1a3kyt" path="res://living_stuff/boss_one.gd" id="1_tu681"]
+[ext_resource type="PackedScene" uid="uid://b1toamioeteuc" path="res://living_stuff/bullet.tscn" id="2_xt2k7"]
+[ext_resource type="PackedScene" uid="uid://ka8b444ai3tg" path="res://living_stuff/enemy.tscn" id="3_jstdl"]
+[ext_resource type="Texture2D" uid="uid://43amorwh4brn" path="res://icon.svg" id="5_er76v"]
+[ext_resource type="Script" uid="uid://cepg5sm52iopi" path="res://living_stuff/health_bar.gd" id="6_hlsp2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68mk5"]
+size = Vector2(207, 206)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_er76v"]
+size = Vector2(42, 819)
+
+[node name="BossOne" type="Node2D" groups=["mobs"]]
+script = ExtResource("1_tu681")
+bullet_scene = ExtResource("2_xt2k7")
+bullet_amount = 15
+attack_stick_speed = 400
+mob_scene = ExtResource("3_jstdl")
+
+[node name="Boss" parent="." instance=ExtResource("1_q1gx3")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Boss"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_er76v")
+
+[node name="HealthBar" type="ColorRect" parent="Boss/Sprite2D"]
+offset_left = -160.0
+offset_top = 86.666664
+offset_right = 160.0
+offset_bottom = 126.666664
+color = Color(1, 0, 0, 1)
+script = ExtResource("6_hlsp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss"]
+shape = SubResource("RectangleShape2D_68mk5")
+
+[node name="AttackPivot" type="Node2D" parent="Boss"]
+visible = false
+metadata/_edit_group_ = true
+
+[node name="AttackStick" type="Area2D" parent="Boss/AttackPivot"]
+position = Vector2(-600, 0)
+rotation = 1.5707964
+collision_mask = 0
+monitoring = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Boss/AttackPivot/AttackStick"]
+scale = Vector2(0.5, 7)
+texture = ExtResource("5_er76v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/AttackPivot/AttackStick"]
+shape = SubResource("RectangleShape2D_er76v")
+
+[node name="AttackStick2" type="Area2D" parent="Boss/AttackPivot"]
+position = Vector2(600, 0)
+rotation = 1.5707964
+collision_mask = 0
+monitoring = false
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Boss/AttackPivot/AttackStick2"]
+scale = Vector2(0.5, 7)
+texture = ExtResource("5_er76v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/AttackPivot/AttackStick2"]
+shape = SubResource("RectangleShape2D_er76v")
+
+[connection signal="body_entered" from="Boss" to="Boss/Sprite2D/HealthBar" method="_on_boss_body_entered"]

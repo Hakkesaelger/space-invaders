@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgi21s1hlbsy8"]
 
 [ext_resource type="Script" uid="uid://cibst5bqxx422" path="res://level.gd" id="1_f2txt"]
-[ext_resource type="PackedScene" uid="uid://darjgb3fu5rx" path="res://living stuff/player.tscn" id="4_km5ld"]
-[ext_resource type="PackedScene" uid="uid://iwcmw6l6acna" path="res://HUD thingies/main_menu.tscn" id="5_i2t4f"]
+[ext_resource type="PackedScene" uid="uid://darjgb3fu5rx" path="res://living_stuff/player.tscn" id="4_km5ld"]
+[ext_resource type="PackedScene" uid="uid://iwcmw6l6acna" path="res://HUD_thingies/main_menu.tscn" id="5_i2t4f"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_f2txt")
