@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://ctrfk8l2wgkm" path="res://HUD_thingies/select_button.gd" id="1_rsgsm"]
 
 [node name="SelectButton" type="Button"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 228.0
+offset_bottom = 116.0
+disabled = true
 script = ExtResource("1_rsgsm")
 level = "<null>"
 

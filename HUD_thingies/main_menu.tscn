@@ -42,6 +42,7 @@ offset_left = 24.0
 offset_top = 13.0
 offset_right = 116.0
 offset_bottom = 74.0
+disabled = false
 text = "Back to level select"
 
 [connection signal="button_down" from="StartGameButton" to="." method="_on_start_game_button_button_down"]
