@@ -79,4 +79,4 @@ position = Vector2(732, 228)
 position = Vector2(535, 565)
 
 [node name="BossSpawnPosition" type="Node2D" parent="Level"]
-position = Vector2(524, 119)
+position = Vector2(524, 175)

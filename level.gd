@@ -26,11 +26,11 @@ func _on_enemy_all_dead():
 	var boss: Node2D = boss_scene.instantiate()
 	await get_tree().create_timer(1).timeout
 	add_child(boss)
-	$BossOne/Boss/Sprite2D.position = $BossSpawnPosition.position
+	$BossOne/Boss/AnimatedSprite2D.position = $BossSpawnPosition.position
 	$BossOne/Boss/CollisionShape2D.position = $BossSpawnPosition.position
 	await get_tree().create_timer(1).timeout
 	$BossOne/Boss.attack_pattern()
-	$BossOne/Boss/Sprite2D/HealthBar.boss_dead.connect(_on_boss_boss_dead)
+	$BossOne/Boss/AnimatedSprite2D/HealthBar.boss_dead.connect(_on_boss_boss_dead)
 #	go_to_menu.emit()
 #	$MainMenu.show_text("You Win!")
 

@@ -12,6 +12,7 @@ var used_positions: Array = []
 func _ready():
 	$Boss.process = do_nothing
 	$Boss.attacks = [hole_in_the_wall, bullet_circle, summon_reinforcements]
+	$Boss/AnimatedSprite2D.play("idle")
 
 func move_attack_sticks(delta):
 	$Boss/AttackPivot.position.y += attack_stick_speed * delta
@@ -40,7 +41,7 @@ func bullet_circle():
 		var bullet: RigidBody2D = bullet_scene.instantiate()
 		bullet.evil = true
 		bullet.speed = bullet.speed.rotated(deg_to_rad(i))
-		bullet.position = $Boss/Sprite2D.position
+		bullet.position = $Boss/AnimatedSprite2D.position
 		add_sibling(bullet)
 	await get_tree().create_timer(1).timeout
 
@@ -58,10 +59,10 @@ func summon_reinforcements():
 		used_positions.push_front(place)
 		mob.position = Vector2(place + randi() % 20 -10, 228)
 		mob.all_dead.connect(_on_mob_all_dead)
-	$Boss/Sprite2D.hide()
+	$Boss/AnimatedSprite2D.hide()
 	$Boss/CollisionShape2D.disabled = true
 	await get_tree().create_timer(4).timeout
 func _on_mob_all_dead():
-	$Boss/Sprite2D.show()
+	$Boss/AnimatedSprite2D.show()
 	$Boss/CollisionShape2D.set_deferred("disabled",false)
 	used_positions = []

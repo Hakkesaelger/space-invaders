@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpk1s0kjdf8hk"]
+[gd_scene load_steps=26 format=3 uid="uid://dpk1s0kjdf8hk"]
 
 [ext_resource type="PackedScene" uid="uid://csa7w4okrgsou" path="res://boss.tscn" id="1_q1gx3"]
 [ext_resource type="Script" uid="uid://4yp1py1a3kyt" path="res://living_stuff/boss_one.gd" id="1_tu681"]
@@ -6,12 +6,84 @@
 [ext_resource type="PackedScene" uid="uid://ka8b444ai3tg" path="res://living_stuff/enemy.tscn" id="3_jstdl"]
 [ext_resource type="Texture2D" uid="uid://43amorwh4brn" path="res://icon.svg" id="5_er76v"]
 [ext_resource type="Script" uid="uid://cepg5sm52iopi" path="res://living_stuff/health_bar.gd" id="6_hlsp2"]
+[ext_resource type="Texture2D" uid="uid://bqwrqlfehuuna" path="res://living_stuff/boss_one_sprites/idle/sprite_00.png" id="6_lulvb"]
+[ext_resource type="Texture2D" uid="uid://swy81464a40d" path="res://living_stuff/boss_one_sprites/idle/sprite_01.png" id="7_jfwe7"]
+[ext_resource type="Texture2D" uid="uid://ddpafjqyi3m3r" path="res://living_stuff/boss_one_sprites/idle/sprite_02.png" id="8_a13dp"]
+[ext_resource type="Texture2D" uid="uid://eqtkwnksv7tp" path="res://living_stuff/boss_one_sprites/idle/sprite_03.png" id="9_ldt67"]
+[ext_resource type="Texture2D" uid="uid://dgu1toq227oxj" path="res://living_stuff/boss_one_sprites/idle/sprite_04.png" id="10_ev70y"]
+[ext_resource type="Texture2D" uid="uid://bj3a0dpmr36nt" path="res://living_stuff/boss_one_sprites/idle/sprite_05.png" id="11_lyyvp"]
+[ext_resource type="Texture2D" uid="uid://qt4fqkhri7ie" path="res://living_stuff/boss_one_sprites/idle/sprite_06.png" id="12_bmk2k"]
+[ext_resource type="Texture2D" uid="uid://cfpg358eqleeu" path="res://living_stuff/boss_one_sprites/idle/sprite_07.png" id="13_infgt"]
+[ext_resource type="Texture2D" uid="uid://nf8ymxu4o2le" path="res://living_stuff/boss_one_sprites/idle/sprite_08.png" id="14_3754w"]
+[ext_resource type="Texture2D" uid="uid://c3j624owf8ej4" path="res://living_stuff/boss_one_sprites/idle/sprite_09.png" id="15_qu01i"]
+[ext_resource type="Texture2D" uid="uid://bv2ljbxvihxcd" path="res://living_stuff/boss_one_sprites/idle/sprite_10.png" id="16_cjwru"]
+[ext_resource type="Texture2D" uid="uid://o4ify06wst1h" path="res://living_stuff/boss_one_sprites/idle/sprite_11.png" id="17_ndssv"]
+[ext_resource type="Texture2D" uid="uid://74xeqj1dus6w" path="res://living_stuff/boss_one_sprites/idle/sprite_12.png" id="18_tn2ku"]
+[ext_resource type="Texture2D" uid="uid://dac04bmsr2lro" path="res://living_stuff/boss_one_sprites/idle/sprite_13.png" id="19_to30k"]
+[ext_resource type="Texture2D" uid="uid://u5iy8goqaq2g" path="res://living_stuff/boss_one_sprites/idle/sprite_14.png" id="20_w6uyh"]
+[ext_resource type="Texture2D" uid="uid://ct86u0gh8a3vr" path="res://living_stuff/boss_one_sprites/idle/sprite_15.png" id="21_oyk1k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68mk5"]
 size = Vector2(207, 206)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_er76v"]
 size = Vector2(42, 819)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s40jh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_lulvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jfwe7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_a13dp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ldt67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ev70y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lyyvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bmk2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_infgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3754w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qu01i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_cjwru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ndssv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_tn2ku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_to30k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_w6uyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_oyk1k")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="BossOne" type="Node2D" groups=["mobs"]]
 script = ExtResource("1_tu681")
@@ -21,18 +93,6 @@ attack_stick_speed = 400
 mob_scene = ExtResource("3_jstdl")
 
 [node name="Boss" parent="." instance=ExtResource("1_q1gx3")]
-
-[node name="Sprite2D" type="Sprite2D" parent="Boss"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_er76v")
-
-[node name="HealthBar" type="ColorRect" parent="Boss/Sprite2D"]
-offset_left = -160.0
-offset_top = 86.666664
-offset_right = 160.0
-offset_bottom = 126.666664
-color = Color(1, 0, 0, 1)
-script = ExtResource("6_hlsp2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss"]
 shape = SubResource("RectangleShape2D_68mk5")
@@ -69,4 +129,16 @@ texture = ExtResource("5_er76v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/AttackPivot/AttackStick2"]
 shape = SubResource("RectangleShape2D_er76v")
 
-[connection signal="body_entered" from="Boss" to="Boss/Sprite2D/HealthBar" method="_on_boss_body_entered"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Boss"]
+sprite_frames = SubResource("SpriteFrames_s40jh")
+animation = &"idle"
+
+[node name="HealthBar" type="ColorRect" parent="Boss/AnimatedSprite2D"]
+offset_left = -240.0
+offset_top = 130.0
+offset_right = 80.0
+offset_bottom = 170.0
+color = Color(1, 0, 0, 1)
+script = ExtResource("6_hlsp2")
+
+[connection signal="body_entered" from="Boss" to="Boss/AnimatedSprite2D/HealthBar" method="_on_boss_body_entered"]
