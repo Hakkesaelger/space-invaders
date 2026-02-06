@@ -8,7 +8,7 @@ extends Node2D
 var positions: Array = [110, 220, 330, 440, 550, 660, 770, 880, 990]
 var used_positions: Array = []
 @export var attack_stick_random_distance_from_player: int = 350
-
+@export var attack_stick_time_before_moving: float = 0.5
 func _ready():
 	$Boss.process = do_nothing
 	$Boss.attacks = [hole_in_the_wall, bullet_circle, summon_reinforcements]
@@ -29,6 +29,7 @@ func hole_in_the_wall():
 	#Clamp it to a reasonable number
 	$Boss/AttackPivot.position.x = random_pos
 	$Boss/AttackPivot.show()
+	await get_tree().create_timer(attack_stick_time_before_moving).timeout
 	$Boss.process = move_attack_sticks
 	await get_tree().create_timer(2).timeout
 	$Boss/AttackPivot.hide()

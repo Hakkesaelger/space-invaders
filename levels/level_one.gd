@@ -2,11 +2,6 @@ extends Node
 
 @export var mob_scene: PackedScene
 @export var boss_scene: PackedScene
-@export_file var level_select
-
-func _ready() -> void:
-	$Level/MainMenu/SelectButton.level = level_select
-	$Level/MainMenu.new_game.connect(_on_main_menu_new_game)
 
 func _on_main_menu_new_game():
 	get_tree().call_group("mobs","queue_free")
@@ -34,4 +29,4 @@ func _on_enemy_all_dead():
 
 func _on_boss_boss_dead():
 	$BossOne.queue_free()
-	$Level.win("One")
+	$Level.win("one")

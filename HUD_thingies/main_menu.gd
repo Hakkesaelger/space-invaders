@@ -17,7 +17,7 @@ func _on_start_game_button_button_down() -> void:
 	hide()
 
 
-func _on_main_go_to_menu() -> void:
+func _on_level_go_to_menu() -> void:
 	show()
 
 func show_text(text):

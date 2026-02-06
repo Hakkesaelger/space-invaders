@@ -1,7 +1,7 @@
 # My first godot project
 
-Has one enemy type  
-Has one level  
+Has two enemy types  
+Has two levels  
 Has one boss  
 
 *Pretty fun to play* if I'm being honest

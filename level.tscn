@@ -6,6 +6,7 @@
 
 [node name="Level" type="Node"]
 script = ExtResource("1_f2txt")
+level_select = "uid://db135r1vagu1t"
 
 [node name="Player" parent="." instance=ExtResource("4_km5ld")]
 position = Vector2(535, 565)
@@ -14,7 +15,6 @@ position = Vector2(535, 565)
 
 [node name="MainMenu" parent="." instance=ExtResource("5_i2t4f")]
 
-[connection signal="go_to_menu" from="." to="MainMenu" method="_on_main_go_to_menu"]
+[connection signal="go_to_menu" from="." to="MainMenu" method="_on_level_go_to_menu"]
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
-[connection signal="new_game" from="MainMenu" to="." method="_on_main_menu_new_game"]
 [connection signal="new_game" from="MainMenu" to="Player" method="_on_main_menu_new_game"]

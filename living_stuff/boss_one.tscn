@@ -101,13 +101,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68mk5"]
-size = Vector2(207, 206)
+size = Vector2(317, 206)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_er76v"]
-size = Vector2(71, 330.66666)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ev70y"]
+radius = 43.0
+height = 338.6667
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ev70y"]
-size = Vector2(88.999954, 977)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lyyvp"]
+radius = 40.0
+height = 956.0
 
 [node name="BossOne" type="Node2D" groups=["mobs"]]
 script = ExtResource("1_tu681")
@@ -115,6 +117,7 @@ bullet_scene = ExtResource("2_xt2k7")
 bullet_amount = 15
 attack_stick_speed = 400
 mob_scene = ExtResource("3_jstdl")
+attack_stick_random_distance_from_player = 200
 
 [node name="Boss" parent="." instance=ExtResource("1_q1gx3")]
 
@@ -138,21 +141,22 @@ visible = false
 metadata/_edit_group_ = true
 
 [node name="AttackStick" type="Area2D" parent="Boss/AttackPivot"]
-position = Vector2(-600, 0)
+position = Vector2(-650, 0)
 rotation = 1.5707964
 scale = Vector2(1, 3)
 collision_mask = 0
 monitoring = false
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Boss/AttackPivot/AttackStick"]
 rotation = 1.5707964
 texture = ExtResource("26_ev70y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/AttackPivot/AttackStick"]
-shape = SubResource("RectangleShape2D_er76v")
+shape = SubResource("CapsuleShape2D_ev70y")
 
 [node name="AttackStick2" type="Area2D" parent="Boss/AttackPivot"]
-position = Vector2(600, 0)
+position = Vector2(650, 0)
 rotation = 1.5707964
 collision_mask = 0
 monitoring = false
@@ -164,7 +168,7 @@ scale = Vector2(3, 1)
 texture = ExtResource("26_ev70y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/AttackPivot/AttackStick2"]
-shape = SubResource("RectangleShape2D_ev70y")
+shape = SubResource("CapsuleShape2D_lyyvp")
 
 [connection signal="body_entered" from="Boss" to="Boss/AnimatedSprite2D/HealthBar" method="_on_boss_body_entered"]
 [connection signal="animation_finished" from="Boss/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

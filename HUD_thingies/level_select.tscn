@@ -28,3 +28,12 @@ offset_right = 471.0
 offset_bottom = 342.0
 text = "Level 1"
 level = "uid://bs3avrboud4gc"
+
+[node name="Level2" parent="." instance=ExtResource("1_o7307")]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 230.0
+offset_right = 746.0
+offset_bottom = 346.0
+text = "Level 2"
+level = "uid://bt6qrljl2wk0d"

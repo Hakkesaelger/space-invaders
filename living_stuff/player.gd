@@ -25,7 +25,7 @@ func _process(_delta):
 		$AnimatedSprite2D.play("shoot right")
 		if attack_side > 0:
 			$AnimatedSprite2D.play("shoot left")
-		PlayerInformation.player_position = position
+	PlayerInformation.player_position = position
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
