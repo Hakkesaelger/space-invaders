@@ -20,6 +20,7 @@ func do_nothing(_delta):
 	pass
 
 func hole_in_the_wall():
+	@warning_ignore("narrowing_conversion")
 	var random_pos: int = PlayerInformation.player_position.x
 	#The hole is centered on the player
 	random_pos += randi() % (2 * attack_stick_random_distance_from_player) - attack_stick_random_distance_from_player
@@ -35,6 +36,8 @@ func hole_in_the_wall():
 	$Boss.process = do_nothing
 
 func bullet_circle():
+	$Boss/AnimatedSprite2D.play("bullet_circle")
+	await get_tree().create_timer(0.5).timeout
 	var firstBullet: int = randi() % 360
 	@warning_ignore("integer_division")
 	for i in range(firstBullet, 360 + firstBullet, 360 / bullet_amount):
@@ -66,3 +69,7 @@ func _on_mob_all_dead():
 	$Boss/AnimatedSprite2D.show()
 	$Boss/CollisionShape2D.set_deferred("disabled",false)
 	used_positions = []
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$Boss/AnimatedSprite2D.play("idle")
