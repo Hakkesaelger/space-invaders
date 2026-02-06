@@ -2,3 +2,6 @@
 .godot/
 /android/
 *.DS_Store
+living_stuff/.DS_Store
+living_stuff/enemy_one_sprites/.DS_Store
+living_stuff/player_sprites/.DS_Store
