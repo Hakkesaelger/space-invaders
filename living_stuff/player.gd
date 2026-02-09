@@ -7,10 +7,10 @@ var velocity: Vector2
 var attack_cooldown_over: bool = true
 var attack_side: int = 32
 
-func _ready():
+func _ready() -> void:
 	$AnimatedSprite2D.play("idle")
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot") and attack_cooldown_over:
 		$AttackCooldown.start()
 		attack_cooldown_over = false
@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	position.x = clampf(position.x, 0, screen_size.x)
 	
 
-func _on_main_menu_new_game():
+func _on_main_menu_new_game() -> void:
 	show()
 	$CollisionShape2D.set_deferred("disabled", false)
 
@@ -51,7 +51,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.evil:
 		die()
 
-func die():
+func die() -> void:
 	hide()
 	$CollisionShape2D.set_deferred("disabled", true)
 	dead.emit()
@@ -59,7 +59,7 @@ func die():
 func _on_area_entered(_area: Area2D) -> void:
 	die()
 
-func _on_enemy_left_screen():
+func _on_enemy_left_screen() -> void:
 	die()
 
 

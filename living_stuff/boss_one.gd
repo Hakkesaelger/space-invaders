@@ -9,17 +9,17 @@ var positions: Array = [110, 220, 330, 440, 550, 660, 770, 880, 990]
 var used_positions: Array = []
 @export var attack_stick_random_distance_from_player: int = 350
 @export var attack_stick_time_before_moving: float = 0.5
-func _ready():
+func _ready() -> void:
 	$Boss.process = do_nothing
 	$Boss.attacks = [hole_in_the_wall, bullet_circle, summon_reinforcements]
 	$Boss/AnimatedSprite2D.play("idle")
 
-func move_attack_sticks(delta):
+func move_attack_sticks(delta: float) -> void:
 	$Boss/AttackPivot.position.y += attack_stick_speed * delta
-func do_nothing(_delta):
+func do_nothing(_delta: float) -> void:
 	pass
 
-func hole_in_the_wall():
+func hole_in_the_wall() -> void:
 	@warning_ignore("narrowing_conversion")
 	var random_pos: int = PlayerInformation.player_position.x
 	#The hole is centered on the player
@@ -36,7 +36,7 @@ func hole_in_the_wall():
 	$Boss/AttackPivot.position.y = 0
 	$Boss.process = do_nothing
 
-func bullet_circle():
+func bullet_circle() -> void:
 	$Boss/AnimatedSprite2D.play("bullet_circle")
 	await get_tree().create_timer(0.5).timeout
 	var firstBullet: int = randi() % 360
@@ -49,7 +49,7 @@ func bullet_circle():
 		add_sibling(bullet)
 	await get_tree().create_timer(1).timeout
 
-func summon_reinforcements():
+func summon_reinforcements() -> void:
 	if len(used_positions) == len(positions):
 		return
 	for i in range(reinforcements):
@@ -66,7 +66,7 @@ func summon_reinforcements():
 	$Boss/AnimatedSprite2D.hide()
 	$Boss/CollisionShape2D.disabled = true
 	await get_tree().create_timer(4).timeout
-func _on_mob_all_dead():
+func _on_mob_all_dead() -> void:
 	$Boss/AnimatedSprite2D.show()
 	$Boss/CollisionShape2D.set_deferred("disabled",false)
 	used_positions = []

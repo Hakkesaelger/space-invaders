@@ -8,7 +8,7 @@ func _on_player_dead() -> void:
 	go_to_menu.emit()
 	$MainMenu.show_text("You Died!")
 
-func win(level: StringName):
+func win(level: StringName) -> void:
 	PlayerInformation.beat_level(level)
 	go_to_menu.emit()
 	$MainMenu.show_text("You Win!")

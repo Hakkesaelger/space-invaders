@@ -39,6 +39,7 @@ scale = Vector2(0.5, 0.5)
 collision_layer = 6
 collision_mask = 5
 script = ExtResource("1_7eptd")
+movement_speed_side = 150
 bullet_scene = ExtResource("2_3kih0")
 bullet_chance = 0.2
 

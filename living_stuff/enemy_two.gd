@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	if move_down:
 		position.y += movement_speed_down * delta
 
-func _ready():
+func _ready() -> void:
 	bullet_possibility = randf()
 	await get_tree().create_timer(0.5).timeout
 	ready_to_shoot = true
@@ -58,7 +58,7 @@ func _on_start_moving_timeout() -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	left_screen.emit()
 
-func shoot():
+func shoot() -> void:
 	bullet_progress = 0
 	bullet_possibility = randf() + 1
 	if not dying:

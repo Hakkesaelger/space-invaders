@@ -20,5 +20,5 @@ func _on_start_game_button_button_down() -> void:
 func _on_level_go_to_menu() -> void:
 	show()
 
-func show_text(text):
+func show_text(text) -> void:
 	$Label.text = text

@@ -2,7 +2,7 @@ extends Node
 
 @export var mob_scene: PackedScene
 
-func _on_main_menu_new_game():
+func _on_main_menu_new_game() -> void:
 	get_tree().call_group("mobs","queue_free")
 	$Level/Player.position = $PlayerSpawnPosition.position
 	for i in range($EnemySpawners.get_child_count()):
@@ -14,5 +14,5 @@ func _on_main_menu_new_game():
 		if i >= 10:
 			mob.move_right = -1
 
-func _on_enemy_all_dead():
+func _on_enemy_all_dead() -> void:
 	$Level.win("two")
