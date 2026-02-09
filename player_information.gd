@@ -7,5 +7,5 @@ var levels_beaten: Array = []
 func beat_level(level: StringName) -> void:
 	levels_beaten.append(level)
 
-func beaten_level(level: StringName) -> void:
+func beaten_level(level: StringName) -> bool:
 	return levels_beaten.has(level)
