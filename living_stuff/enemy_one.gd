@@ -45,7 +45,9 @@ func _on_body_entered(body: Node2D) -> void:
 		body.queue_free()
 		$CollisionShape2D.set_deferred("disabled",true)
 		$AnimatedSprite2D.play("death")
-		await get_tree().create_timer(1.2).timeout
+		move_right = 0
+		move_down = false
+		await $AnimatedSprite2D.animation_finished
 		if get_parent().get_child_count() == 1:
 			all_dead.emit()
 		queue_free()
@@ -61,7 +63,8 @@ func shoot() -> void:
 	bullet_possibility = randf() + 1
 	if not dying:
 		$AnimatedSprite2D.play("shoot")
-	await get_tree().create_timer(2).timeout
+	await $AnimatedSprite2D.animation_finished
+	$AnimatedSprite2D.play("idle")
 	var bullet: RigidBody2D = bullet_scene.instantiate()
 	var bullet_position: Vector2 = position
 	bullet_position.y += 35
@@ -70,7 +73,3 @@ func shoot() -> void:
 	get_parent().add_sibling(bullet)
 	bullet.rotation = PI
 	bullet.linear_velocity.y *= -1
-
-
-func _on_animated_sprite_2d_animation_finished() -> void:
-	$AnimatedSprite2D.play("idle")

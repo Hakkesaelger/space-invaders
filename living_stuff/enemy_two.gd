@@ -18,8 +18,8 @@ var dying: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	look_at(PlayerInformation.player_position)
-	rotate(PI / 2)
+	$AnimatedSprite2D.look_at(PlayerInformation.player_position)
+	$AnimatedSprite2D.rotate(PI / 2)
 	bullet_progress += delta * bullet_chance
 	if ready_to_shoot:
 		if bullet_progress > bullet_possibility:
@@ -47,7 +47,6 @@ func _on_body_entered(body: Node2D) -> void:
 		body.queue_free()
 		$CollisionShape2D.set_deferred("disabled",true)
 		$AnimatedSprite2D.play("death")
-		await get_tree().create_timer(0).timeout
 		if get_parent().get_child_count() == 1:
 			all_dead.emit()
 		queue_free()
@@ -70,9 +69,8 @@ func shoot() -> void:
 	bullet.position = bullet_position
 	bullet.evil = true
 	get_parent().add_sibling(bullet)
-	bullet.look_at(PlayerInformation.player_position)
-	bullet.rotate(PI/2)
-	bullet.linear_velocity = bullet.linear_velocity.rotated(rotation)
+	bullet.rotation = $AnimatedSprite2D.rotation
+	bullet.linear_velocity = bullet.linear_velocity.rotated($AnimatedSprite2D.rotation)
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

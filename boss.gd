@@ -1,7 +1,9 @@
 extends Area2D
 
-@export var seconds_between_attacks: float = 1.0
 var attacks: Array = []
+@export var time_until_special_attack = 5
+var countdown_to_special_attack = time_until_special_attack
+var special_attack: Callable
 
 var process: Callable
 
@@ -10,6 +12,10 @@ func _process(delta: float) -> void:
 
 func attack_pattern() -> void:
 	while true:
-		await get_tree().create_timer(seconds_between_attacks).timeout
-		var attack: Callable = attacks.pick_random()
-		await attack.call()
+		if countdown_to_special_attack >= 0:
+			countdown_to_special_attack -= 1
+			var attack: Callable = attacks.pick_random()
+			await attack.call()
+		else:
+			await special_attack.call()
+			countdown_to_special_attack = time_until_special_attack

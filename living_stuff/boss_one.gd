@@ -9,10 +9,12 @@ var positions: Array = [110, 220, 330, 440, 550, 660, 770, 880, 990]
 var used_positions: Array = []
 @export var attack_stick_random_distance_from_player: int = 350
 @export var attack_stick_time_before_moving: float = 0.5
+
 func _ready() -> void:
 	$Boss.process = do_nothing
-	$Boss.attacks = [hole_in_the_wall, bullet_circle, summon_reinforcements]
+	$Boss.attacks = [hole_in_the_wall, bullet_circle]
 	$Boss/AnimatedSprite2D.play("idle")
+	$Boss.special_attack = summon_reinforcements
 
 func move_attack_sticks(delta: float) -> void:
 	$Boss/AttackPivot.position.y += attack_stick_speed * delta

@@ -131,6 +131,7 @@ offset_right = 160.0
 offset_bottom = 170.0
 color = Color(1, 0, 0, 1)
 script = ExtResource("6_hlsp2")
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss"]
 shape = SubResource("RectangleShape2D_68mk5")

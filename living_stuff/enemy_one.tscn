@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ka8b444ai3tg"]
+[gd_scene load_steps=23 format=3 uid="uid://ka8b444ai3tg"]
 
 [ext_resource type="Script" uid="uid://bt0j62g2goovv" path="res://living_stuff/enemy_one.gd" id="1_orwns"]
 [ext_resource type="PackedScene" uid="uid://b1toamioeteuc" path="res://living_stuff/bullet.tscn" id="2_a6vjd"]
@@ -20,8 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://crojoog0gu7g4" path="res://living_stuff/enemy_one_sprites/shoot/sprite_08.png" id="11_gd663"]
 [ext_resource type="Texture2D" uid="uid://caudagnpsjfxc" path="res://living_stuff/enemy_one_sprites/shoot/sprite_09.png" id="12_8wyrr"]
 [ext_resource type="Texture2D" uid="uid://bqe45wb6qr2jn" path="res://living_stuff/enemy_one_sprites/shoot/sprite_10.png" id="13_b0q8v"]
-[ext_resource type="Texture2D" uid="uid://dihglpluj6br" path="res://living_stuff/enemy_one_sprites/shoot/sprite_12.png" id="14_vyquo"]
-[ext_resource type="Texture2D" uid="uid://vr23ia5uok3t" path="res://living_stuff/enemy_one_sprites/shoot/sprite_11.png" id="15_j42tx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ft0u3"]
 animations = [{
@@ -89,12 +87,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("13_b0q8v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_vyquo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_j42tx")
 }],
 "loop": false,
 "name": &"shoot",
@@ -124,7 +116,7 @@ rect = Rect2(-50, 32, 98, 12)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ft0u3")
-animation = &"idle"
+animation = &"shoot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 53)
@@ -134,4 +126,3 @@ shape = SubResource("RectangleShape2D_4gyqm")
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="StartMoving" to="." method="_on_start_moving_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
