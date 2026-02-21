@@ -23,12 +23,12 @@ func do_nothing(_delta: float) -> void:
 
 func hole_in_the_wall() -> void:
 	@warning_ignore("narrowing_conversion")
-	var random_pos: int = PlayerInformation.player_position.x
 	#The hole is centered on the player
-	random_pos += randi() % (2 * attack_stick_random_distance_from_player) - attack_stick_random_distance_from_player
+	var random_pos: int = PlayerInformation.get_player_position()
 	#Add some randomization
-	random_pos = clampi(random_pos, 200, 1000)
+	random_pos += randi() % (2 * attack_stick_random_distance_from_player) - attack_stick_random_distance_from_player
 	#Clamp it to a reasonable number
+	random_pos = clampi(random_pos, 200, 1000)
 	$Boss/AttackPivot.position.x = random_pos
 	$Boss/AttackPivot.show()
 	await get_tree().create_timer(attack_stick_time_before_moving).timeout

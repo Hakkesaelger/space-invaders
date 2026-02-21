@@ -9,6 +9,7 @@ var attack_side: int = 32
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("idle")
+	PlayerInformation.player = self
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot") and attack_cooldown_over:
@@ -25,7 +26,6 @@ func _process(_delta: float) -> void:
 		$AnimatedSprite2D.play("shoot right")
 		if attack_side > 0:
 			$AnimatedSprite2D.play("shoot left")
-	PlayerInformation.player_position = position
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO

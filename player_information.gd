@@ -1,6 +1,6 @@
 extends Node
 
-var player_position: Vector2 = Vector2.ZERO
+var player: Area2D
 
 var levels_beaten: Array = []
 
@@ -9,3 +9,6 @@ func beat_level(level: StringName) -> void:
 
 func beaten_level(level: StringName) -> bool:
 	return levels_beaten.has(level)
+
+func get_player_position():
+	return player.position.x
