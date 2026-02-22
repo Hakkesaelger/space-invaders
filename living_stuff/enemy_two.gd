@@ -18,7 +18,7 @@ var dying: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$AnimatedSprite2D.look_at(PlayerInformation.player_position)
+	$AnimatedSprite2D.look_at(PlayerInformation.get_player_position())
 	$AnimatedSprite2D.rotate(PI / 2)
 	bullet_progress += delta * bullet_chance
 	if ready_to_shoot:

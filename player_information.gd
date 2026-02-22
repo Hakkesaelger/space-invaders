@@ -10,5 +10,5 @@ func beat_level(level: StringName) -> void:
 func beaten_level(level: StringName) -> bool:
 	return levels_beaten.has(level)
 
-func get_player_position():
-	return player.position.x
+func get_player_position() -> Vector2:
+	return player.position

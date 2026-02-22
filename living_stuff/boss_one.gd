@@ -24,7 +24,7 @@ func do_nothing(_delta: float) -> void:
 func hole_in_the_wall() -> void:
 	@warning_ignore("narrowing_conversion")
 	#The hole is centered on the player
-	var random_pos: int = PlayerInformation.get_player_position()
+	var random_pos: int = PlayerInformation.get_player_position().x
 	#Add some randomization
 	random_pos += randi() % (2 * attack_stick_random_distance_from_player) - attack_stick_random_distance_from_player
 	#Clamp it to a reasonable number
