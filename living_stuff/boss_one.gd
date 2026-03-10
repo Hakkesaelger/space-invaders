@@ -15,6 +15,7 @@ func _ready() -> void:
 	$Boss.attacks = [hole_in_the_wall, bullet_circle]
 	$Boss/AnimatedSprite2D.play("idle")
 	$Boss.special_attack = summon_reinforcements
+	set_process(false)
 
 func move_attack_sticks(delta: float) -> void:
 	$Boss/AttackPivot.position.y += attack_stick_speed * delta
@@ -57,21 +58,22 @@ func summon_reinforcements() -> void:
 	for i in range(reinforcements):
 		var place: int
 		var mob: Area2D = mob_scene.instantiate()
-		$Boss/MobContainer.add_child(mob)
+		$MobContainer.add_child(mob)
 		while true:
 			place = positions.pick_random()
 			if not used_positions.has(place):
 				break
 		used_positions.push_front(place)
 		mob.position = Vector2(place + randi() % 20 -10, 228)
-		mob.all_dead.connect(_on_mob_all_dead)
 	$Boss/AnimatedSprite2D.hide()
 	$Boss/CollisionShape2D.disabled = true
 	await get_tree().create_timer(4).timeout
-func _on_mob_all_dead() -> void:
-	$Boss/AnimatedSprite2D.show()
-	$Boss/CollisionShape2D.set_deferred("disabled",false)
-	used_positions = []
+	set_process(true)
+func _process(_delta: float) -> void:
+	if not $MobContainer.get_child_count():
+		$Boss/AnimatedSprite2D.show()
+		$Boss/CollisionShape2D.disabled = false
+		used_positions = []
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

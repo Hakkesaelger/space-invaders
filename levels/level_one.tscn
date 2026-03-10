@@ -79,3 +79,5 @@ position = Vector2(630, 228)
 position = Vector2(732, 228)
 
 [node name="Level" parent="." instance=ExtResource("2_tfbuk")]
+
+[connection signal="all_dead" from="Level" to="." method="_on_level_all_dead"]

@@ -5,6 +5,3 @@
 [node name="Boss" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_85rbr")
-seconds_between_attacks = 0.0
-
-[node name="MobContainer" type="Node2D" parent="."]

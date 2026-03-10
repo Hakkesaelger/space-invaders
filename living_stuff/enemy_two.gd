@@ -1,6 +1,5 @@
 extends Area2D
 
-signal all_dead
 signal left_screen
 
 var movement: float = 0
@@ -37,7 +36,7 @@ func _physics_process(delta: float) -> void:
 
 func _ready() -> void:
 	bullet_possibility = randf()
-	await get_tree().create_timer(0.5).timeout
+	await $StartShooting.timeout
 	ready_to_shoot = true
 
 
@@ -47,8 +46,9 @@ func _on_body_entered(body: Node2D) -> void:
 		body.queue_free()
 		$CollisionShape2D.set_deferred("disabled",true)
 		$AnimatedSprite2D.play("death")
-		if get_parent().get_child_count() == 1:
-			all_dead.emit()
+		move_right = 0
+		move_down = false
+		await $AnimatedSprite2D.animation_finished
 		queue_free()
 
 func _on_start_moving_timeout() -> void:
@@ -59,19 +59,18 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func shoot() -> void:
 	bullet_progress = 0
-	bullet_possibility = randf() + 1
+	bullet_possibility = randf()
 	if not dying:
 		$AnimatedSprite2D.play("shoot")
 	await get_tree().create_timer(2).timeout
-	var bullet: RigidBody2D = bullet_scene.instantiate()
-	var bullet_position: Vector2 = position
-	bullet_position.y += 35
-	bullet.position = bullet_position
-	bullet.evil = true
-	get_parent().add_sibling(bullet)
-	bullet.rotation = $AnimatedSprite2D.rotation
-	bullet.linear_velocity = bullet.linear_velocity.rotated($AnimatedSprite2D.rotation)
-
-
-func _on_animated_sprite_2d_animation_finished() -> void:
+	await $AnimatedSprite2D.animation_finished
 	$AnimatedSprite2D.play("idle")
+	if not dying:
+		var bullet: RigidBody2D = bullet_scene.instantiate()
+		var bullet_position: Vector2 = position
+		bullet_position.y += 35
+		bullet.position = bullet_position
+		bullet.evil = true
+		get_parent().add_sibling(bullet)
+		bullet.rotation = $AnimatedSprite2D.rotation
+		bullet.linear_velocity = bullet.linear_velocity.rotated($AnimatedSprite2D.rotation)

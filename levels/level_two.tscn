@@ -74,3 +74,5 @@ position = Vector2(741, 191)
 position = Vector2(844, 189)
 
 [node name="Level" parent="." instance=ExtResource("1_ijs4g")]
+
+[connection signal="all_dead" from="Level" to="." method="_on_level_all_dead"]

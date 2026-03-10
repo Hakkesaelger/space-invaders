@@ -116,7 +116,7 @@ script = ExtResource("1_tu681")
 bullet_scene = ExtResource("2_xt2k7")
 attack_stick_speed = 400
 mob_scene = ExtResource("3_jstdl")
-attack_stick_random_distance_from_player = 200
+attack_stick_random_distance_from_player = 500
 
 [node name="Boss" parent="." instance=ExtResource("1_q1gx3")]
 
@@ -169,6 +169,8 @@ texture = ExtResource("26_ev70y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/AttackPivot/AttackStick2"]
 shape = SubResource("CapsuleShape2D_lyyvp")
+
+[node name="MobContainer" type="Node2D" parent="."]
 
 [connection signal="body_entered" from="Boss" to="Boss/AnimatedSprite2D/HealthBar" method="_on_boss_body_entered"]
 [connection signal="animation_finished" from="Boss/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
